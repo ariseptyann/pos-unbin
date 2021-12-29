@@ -1,5 +1,14 @@
 # Aplikasi POS Web Base Unbin
 
+## Nama kelompok
+1. Ari Septyan Nurmawan
+2. Aditia Abdillah
+3. Angga Aldiansyah
+4. Diaz Nantama
+5. Genta Haetami
+6. Hira Maulana
+7. Lucky Lukman
+
 ## Installation & updates
 
 jalankan `composer install` setelah melakukan clone dari github
