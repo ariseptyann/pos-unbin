@@ -25,6 +25,7 @@
     <!-- BEGIN Page Level CSS-->
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/app-assets/css/core/menu/menu-types/vertical-menu.min.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/app-assets/css/core/colors/palette-gradient.min.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/app-assets/fonts/feather/style.min.css">
     <!-- END Page Level CSS-->
     <!-- BEGIN Custom CSS-->
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/app-assets/css/style.css">
@@ -88,7 +89,7 @@
                         <div class="category-title pb-1">
                             <h6>1 Item</h6>
                         </div>
-                        <form action="#" class="category-content">
+                        <!-- <form action="#" class="category-content"> -->
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -125,13 +126,69 @@
                             </div>
                             <div class="row">
                                 <div class="col-6">
-                                    <button type="reset" class="btn btn-warning btn-block">Reset</button>
+                                  <button type="reset" class="btn btn-warning btn-block">Reset</button>
                                 </div>
                                 <div class="col-6">
-                                    <button type="submit" class="btn btn-primary btn-block">Bayar</button>
+                                    
+                                  <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#iconForm">Bayar</button>
+
+                                  <!-- Modal -->
+                                  <div class="modal fade text-left" id="iconForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel34" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                      <h3 class="modal-title" id="myModalLabel34">Pembayaran</h3>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <div class="row">
+
+                                          <div class="col-md-4"> Total </div>
+                                          <div class="col-md-8">
+                                            <div class="form-group position-relative has-icon-left">
+                                              <input type="text" placeholder="Total" class="form-control" value="15.000" readonly="readonly">
+                                              <div class="form-control-position">
+                                                <i class="ft-file font-medium-5 line-height-1 text-muted icon-align"></i>
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                          <div class="col-md-4"> Diskon </div>
+                                          <div class="col-md-8">
+                                            <div class="form-group position-relative has-icon-left">
+                                              <input type="text" placeholder="Diskon" class="form-control" value="0">
+                                              <div class="form-control-position">
+                                                <i class="ft-file-minus font-medium-5 line-height-1 text-muted icon-align"></i>
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                          <div class="col-md-4"> Sub Total </div>
+                                          <div class="col-md-8">
+                                            <div class="form-group position-relative has-icon-left">
+                                              <input type="text" placeholder="Sub Total" class="form-control" value="15.000" readonly="readonly">
+                                              <div class="form-control-position">
+                                                <i class="ft-file-text font-medium-5 line-height-1 text-muted icon-align"></i>
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                        </div>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <input type="reset" class="btn btn-outline-secondary btn-lg" data-dismiss="modal" value="Kembali">
+                                        <input type="submit" class="btn btn-outline-primary btn-lg" value="Bayar">
+                                      </div>
+
+                                    </div>
+                                    </div>
+                                  </div>
+
                                 </div>
                             </div>
-                        </form>
+                        <!-- </form> -->
                     </div>
                     <!-- /form sample -->
                 </div>
