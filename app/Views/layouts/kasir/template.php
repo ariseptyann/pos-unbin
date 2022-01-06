@@ -58,7 +58,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<input type="submit" class="btn btn-outline-primary btn-lg" value="Login">
+				<button data-dismiss="modal" aria-label="Close" class="btn btn-outline-primary btn-lg">Login</button>
 			</div>
 		  </form>
 		</div>
