@@ -33,6 +33,39 @@
 </head>
 <body class="vertical-layout vertical-menu 1-column   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-col="1-column">
 
+  <!-- Modal Login -->
+	<div class="modal fade text-left" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="modalLabelLogin" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h3 class="modal-title" id="modalLabelLogin">Silakan Login</h3>
+		  </div>
+		  <form>
+			<div class="modal-body">
+				<label>Username: </label>
+				<div class="form-group position-relative has-icon-left">
+					<input type="text" placeholder="Username" class="form-control">
+					<div class="form-control-position">
+						<i class="ft-mail font-medium-5 line-height-1 text-muted icon-align"></i>
+					</div>
+				</div>
+				<label>Password: </label>
+				<div class="form-group position-relative has-icon-left">
+					<input type="password" placeholder="Password" class="form-control">
+					<div class="form-control-position">
+						<i class="ft-lock font-large-1 line-height-1 text-muted icon-align"></i>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<input type="submit" class="btn btn-outline-primary btn-lg" value="Login">
+			</div>
+		  </form>
+		</div>
+	  </div>
+	</div>
+  <!-- /Modal Login -->
+
     <!-- fixed-top-->
     <nav class="header-navbar navbar-expand-md navbar navbar-with-menu fixed-top navbar-semi-dark navbar-shadow">
       <div class="navbar-wrapper">
@@ -132,7 +165,7 @@
                                     
                                   <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#iconForm">Bayar</button>
 
-                                  <!-- Modal -->
+                                  <!-- Modal Pembayaran -->
                                   <div class="modal fade text-left" id="iconForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel34" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -185,6 +218,7 @@
                                     </div>
                                     </div>
                                   </div>
+                                  <!-- /Modal Pembayaran -->
 
                                 </div>
                             </div>
@@ -247,6 +281,17 @@
     <!-- BEGIN PAGE LEVEL JS-->
     <script src="<?= base_url() ?>/app-assets/js/scripts/forms/input-groups.min.js"></script>
     <!-- END PAGE LEVEL JS-->
+
+    <script>
+      $(window).on('load', function() {
+          $('#modalLogin').modal({
+            backdrop: 'static',
+            keyboard: true, 
+            show: true
+          });
+      });
+    </script>
+
 </body>
 
 <!-- Mirrored from pixinvent.com/bootstrap-admin-template/robust/html/ltr/vertical-menu-template/layout-1-column.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 02 Dec 2020 06:57:15 GMT -->
