@@ -99,7 +99,7 @@
                     <span class="user-name">John Doe</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                  <a class="dropdown-item" href="login-with-bg-image.html"><i class="ft-power"></i> Logout</a>
+                  <a class="dropdown-item" href="javascript:void(0)"><i class="ft-power"></i> Logout</a>
                 </div>
               </li>
             </ul>
