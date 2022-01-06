@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
   
-<!-- Mirrored from pixinvent.com/bootstrap-admin-template/robust/html/ltr/vertical-menu-template/layout-1-column.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 02 Dec 2020 06:57:14 GMT -->
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description" content="Robust admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template.">
-    <meta name="keywords" content="admin template, robust admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
-    <meta name="author" content="PIXINVENT">
+    <meta name="description" content="Aplikasi POS Web Base Unbin.">
+    <meta name="keywords" content="aplikasi pos, unbin, web base, aplikasi pos web base unbin">
+    <meta name="author" content="POS Unbin">
     <title>POS Unbin</title>
-    <link rel="apple-touch-icon" href="<?= base_url() ?>/app-assets/images/ico/apple-icon-120.png">
-    <link rel="shortcut icon" type="image/x-icon" href="https://pixinvent.com/bootstrap-admin-template/robust/app-assets/images/ico/favicon.ico">
+    <link rel="apple-touch-icon" href="<?= base_url() ?>/app-assets/images/logo/logo-light-sm.png">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>/app-assets/images/logo/logo-light-sm.png">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i%7CMuli:300,400,500,700" rel="stylesheet">
     <!-- BEGIN VENDOR CSS-->
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/app-assets/css/vendors.min.css">
@@ -74,7 +73,7 @@
             <li class="nav-item mobile-menu d-md-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu font-large-1"></i></a></li>
             <li class="nav-item">
                 <a class="navbar-brand" href="<?= site_url('kasir') ?>">
-                    <img class="brand-logo" alt="robust admin logo" src="<?= base_url() ?>/app-assets/images/logo/logo-light-sm.png">
+                    <img class="brand-logo" alt="POS Unbin" src="<?= base_url() ?>/app-assets/images/logo/logo-light-sm.png">
                     <h3 class="brand-text">POS Unbin</h3>
                 </a>
             </li>
@@ -294,5 +293,4 @@
 
 </body>
 
-<!-- Mirrored from pixinvent.com/bootstrap-admin-template/robust/html/ltr/vertical-menu-template/layout-1-column.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 02 Dec 2020 06:57:15 GMT -->
 </html>
