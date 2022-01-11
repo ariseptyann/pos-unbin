@@ -20,7 +20,7 @@ class Kasir extends BaseController
             'username' => $username,
         ])->first();
         if ($dataUser) {
-            if ($password == $dataUser->password) {
+            if (password_verify($password, $dataUser->password)) {
                 if ($dataUser->status == 2) {
                     session()->set([
                         'username' => $dataUser->username,
