@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/app-assets/vendors/css/forms/icheck/custom.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/app-assets/vendors/css/ui/prism.min.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/app-assets/vendors/css/forms/spinner/jquery.bootstrap-touchspin.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/app-assets/vendors/css/extensions/sweetalert.css">
     <!-- END VENDOR CSS-->
     <!-- BEGIN ROBUST CSS-->
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/app-assets/css/app.min.css">
@@ -39,27 +40,30 @@
 		  <div class="modal-header">
 			<h3 class="modal-title" id="modalLabelLogin">Silakan Login</h3>
 		  </div>
-		  <form>
-			<div class="modal-body">
-				<label>Username: </label>
-				<div class="form-group position-relative has-icon-left">
-					<input type="text" placeholder="Username" class="form-control">
-					<div class="form-control-position">
-						<i class="ft-mail font-medium-5 line-height-1 text-muted icon-align"></i>
-					</div>
-				</div>
-				<label>Password: </label>
-				<div class="form-group position-relative has-icon-left">
-					<input type="password" placeholder="Password" class="form-control">
-					<div class="form-control-position">
-						<i class="ft-lock font-large-1 line-height-1 text-muted icon-align"></i>
-					</div>
-				</div>
-			</div>
-			<div class="modal-footer">
-				<button data-dismiss="modal" aria-label="Close" class="btn btn-outline-primary btn-lg">Login</button>
-			</div>
+
+		  <form action="<?= site_url('kasir/login') ?>" method="post">
+        <?= csrf_field(); ?>
+        <div class="modal-body">
+          <label>Username: </label>
+          <div class="form-group position-relative has-icon-left">
+            <input type="text" placeholder="Username" class="form-control" name="username" required>
+            <div class="form-control-position">
+              <i class="ft-mail font-medium-5 line-height-1 text-muted icon-align"></i>
+            </div>
+          </div>
+          <label>Password: </label>
+          <div class="form-group position-relative has-icon-left">
+            <input type="password" placeholder="Password" class="form-control" name="password" required>
+            <div class="form-control-position">
+              <i class="ft-lock font-large-1 line-height-1 text-muted icon-align"></i>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-outline-primary btn-lg">Login</button>
+        </div>
 		  </form>
+
 		</div>
 	  </div>
 	</div>
@@ -96,10 +100,10 @@
                     <span class="avatar avatar-online"><img src="<?= base_url() ?>/app-assets/images/portrait/small/avatar-s-1.png" alt="avatar">
                         <i></i>
                     </span>
-                    <span class="user-name">John Doe</span>
+                    <span class="user-name"><?= session()->get('name'); ?></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                  <a class="dropdown-item" href="javascript:void(0)"><i class="ft-power"></i> Logout</a>
+                  <a class="dropdown-item" href="/kasir/logout"><i class="ft-power"></i> Logout</a>
                 </div>
               </li>
             </ul>
@@ -271,6 +275,7 @@
     <!-- BEGIN PAGE VENDOR JS-->
     <script src="<?= base_url() ?>/app-assets/vendors/js/ui/prism.min.js"></script>
     <script src="<?= base_url() ?>/app-assets/vendors/js/forms/spinner/jquery.bootstrap-touchspin.js"></script>
+    <script src="<?= base_url() ?>/app-assets/vendors/js/extensions/sweetalert.min.js"></script>
     <!-- END PAGE VENDOR JS-->
     <!-- BEGIN ROBUST JS-->
     <script src="<?= base_url() ?>/app-assets/js/core/app-menu.min.js"></script>
@@ -279,9 +284,12 @@
     <!-- END ROBUST JS-->
     <!-- BEGIN PAGE LEVEL JS-->
     <script src="<?= base_url() ?>/app-assets/js/scripts/forms/input-groups.min.js"></script>
+    <script src="<?= base_url() ?>/app-assets/js/scripts/extensions/sweet-alerts.min.js"></script>
     <!-- END PAGE LEVEL JS-->
 
     <script>
+      
+      <?php if(is_null(session()->get('logged_in'))) { ?>
       $(window).on('load', function() {
           $('#modalLogin').modal({
             backdrop: 'static',
@@ -289,6 +297,12 @@
             show: true
           });
       });
+      <?php } ?>
+
+      <?php if (!empty(session()->getFlashdata('error'))) { ?>
+      swal("Login gagal!", "<?= session()->getFlashdata('error') ?>", "error");
+      <?php } ?>
+
     </script>
 
 </body>
