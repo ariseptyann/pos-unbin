@@ -97,7 +97,7 @@
             <ul class="nav navbar-nav float-right">         
               <li class="dropdown dropdown-user nav-item">
                   <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                    <span class="avatar avatar-online"><img src="<?= base_url() ?>/app-assets/images/portrait/small/avatar-s-1.png" alt="avatar">
+                    <span class="avatar avatar-online"><img src="<?= base_url() ?>/app-assets/images/portrait/small/avatar-s-default.png" alt="<?= session()->get('name'); ?>">
                         <i></i>
                     </span>
                     <span class="user-name"><?= session()->get('name'); ?></span>
