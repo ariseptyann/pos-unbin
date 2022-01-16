@@ -240,19 +240,7 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
-                            <div class="row">
-                            <?php for ($i=0; $i < 8; $i++) { ?>
-                                <div class="col-md-3" style="cursor:pointer;">
-                                    <figure class="card card-img-top border-grey border-lighten-2" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                                        <img class="gallery-thumbnail card-img-top" src="<?= base_url() ?>/app-assets/images/gallery/2.jpg" alt="Image description" />
-                                        <div class="card-body">
-                                            <h4 class="card-title">Tango Wafer Waffle Cranch Chox 130G</h4>
-                                            <p class="card-text"><s class="text-danger">8.000</s> 7.500</p>
-                                        </div>
-                                    </figure>
-                                </div>
-                            <?php } ?>
-                            </div>
+                            <div class="row" id="getProduct"> </div>
                         </div>
                     </div> 
                 </div>
@@ -302,6 +290,21 @@
       <?php if (!empty(session()->getFlashdata('error'))) { ?>
       swal("Login gagal!", "<?= session()->getFlashdata('error') ?>", "error");
       <?php } ?>
+
+      $(function() {
+        var getProduct = "<?= site_url('kasir/loadData?load=getProduct') ?>";
+        $('#getProduct').load(getProduct);
+
+        $('input:text[name=pencarian]').keyup(function(e) {
+          var search = $('input:text[name=pencarian]').val();
+          $.get(getProduct, {
+            search: search
+          }, function(data) {
+            $("#getProduct").html(data).show();
+          });
+
+        });
+      });
 
     </script>
 

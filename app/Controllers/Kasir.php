@@ -48,4 +48,9 @@ class Kasir extends BaseController
         return redirect()->to('/kasir');
     }
 
+    public function loadData()
+    {
+        return view('layouts/kasir/loadData');
+    }
+
 }
