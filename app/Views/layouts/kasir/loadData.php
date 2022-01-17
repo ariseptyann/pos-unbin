@@ -3,18 +3,22 @@
     $load = (!empty($_GET['load']) ? $_GET['load'] : null);
     if ($load == 'getProduct') {
 
+        $db = \Config\Database::connect();
         if (!empty($_REQUEST['search'])) {
-            $searching = '';
-        } else {
-            $searching = '';
+            $key = $_REQUEST['search'];
+            $builder = $db->query("SELECT * FROM `products` WHERE (`name` LIKE '%$key%' OR `sku` LIKE '%$key%') ORDER BY `product_id` DESC");
+        }else{
+            $builder = $db->query("SELECT * FROM `products` ORDER BY `product_id` DESC");
         }
 
-        $db         = \Config\Database::connect();
-        $builder    = $db->table('products');
-        $query      = $builder->get();
-        foreach ($query->getResult() as $key => $r) {
+        $query = $builder->getResult();
+        if (count($query) == 0) {
+            echo 'Tidak ada data';
+        } else {
+            foreach ($query as $key => $r) {
 
 ?>
+
     <div class="col-md-3" style="cursor:pointer;">
         <figure class="card card-img-top border-grey border-lighten-2" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
             
@@ -30,7 +34,9 @@
             </div>
         </figure>
     </div>
+
 <?php
+            }
         }
     }else {
         # code...
