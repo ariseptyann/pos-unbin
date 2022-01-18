@@ -30,4 +30,33 @@ $(function() {
 
 });
 
+function beep() {
+    var sound = document.getElementById("audio");
+    sound.play();
+}
+
+function addCart(productId) {
+    beep();
+    if (productId != '') {
+        var cartData;
+        $.ajax({ 
+            type: "GET",
+            url: "<?= site_url('kasir/loadData?load=getCart') ?>",
+            data: {
+                productId: productId,
+            },
+            async: false,
+            success : function(response){
+                cartData = response;
+            }
+        });
+        $('.cart').prepend("<div id='itemCart"+productId+"'>"+cartData+"</div>");
+    }
+}
+
+function deleteCart(productId) {
+    beep();
+    $('#itemCart'+productId).remove();
+}
+
 </script>

@@ -16,7 +16,6 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/app-assets/css/vendors.min.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/app-assets/vendors/css/forms/icheck/custom.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/app-assets/vendors/css/ui/prism.min.css">
-    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/app-assets/vendors/css/forms/spinner/jquery.bootstrap-touchspin.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/app-assets/vendors/css/extensions/sweetalert.css">
     <!-- END VENDOR CSS-->
     <!-- BEGIN ROBUST CSS-->
@@ -32,6 +31,8 @@
     <!-- END Custom CSS-->
 </head>
 <body class="vertical-layout vertical-menu 1-column   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-col="1-column">
+
+  <audio id="audio" src="<?php echo base_url() ?>/app-assets/beep.wav" autostart="false"></audio>
 
   <!-- Modal Login -->
 	<div class="modal fade text-left" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="modalLabelLogin" aria-hidden="true">
@@ -136,30 +137,16 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                
-                                <?php for ($i=0; $i < 3; $i++) { ?>
-                                <div class="row mb-1">
-                                    <div class="col-md-8">Tango Wafer Waffle Cranch Chox 130G</div>
-                                    <div class="col-md-4">
-                                        7.500 
-                                        <center><button class="btn btn-danger btn-sm"><i class="ft-trash-2"></i></button></center>
-                                    </div>
-                                </div>
-                                <fieldset>
-                                    <div class="input-group">
-                                        <input type="text" class="touchspin-color text-center" value="55" data-bts-button-down-class="btn btn-info" data-bts-button-up-class="btn btn-info"/>
-                                    </div>
-                                </fieldset>
-                                <hr>
-                                <?php } ?>
 
+                            <!-- BEGIN ITEM CART  -->
+                            <div class="form-group cart">
                                 <div class="row font-weight-bold">
                                     <div class="col-md-6">Total</div>
                                     <div class="col-md-6 text-right">7.500</div>
                                 </div>
-
                             </div>
+                            <!-- END ITEM CART  -->
+
                             <div class="row">
                                 <div class="col-6">
                                   <button type="reset" class="btn btn-warning btn-block">Reset</button>
@@ -262,7 +249,6 @@
     <!-- BEGIN VENDOR JS-->
     <!-- BEGIN PAGE VENDOR JS-->
     <script src="<?= base_url() ?>/app-assets/vendors/js/ui/prism.min.js"></script>
-    <script src="<?= base_url() ?>/app-assets/vendors/js/forms/spinner/jquery.bootstrap-touchspin.js"></script>
     <script src="<?= base_url() ?>/app-assets/vendors/js/extensions/sweetalert.min.js"></script>
     <!-- END PAGE VENDOR JS-->
     <!-- BEGIN ROBUST JS-->
@@ -271,7 +257,6 @@
     <script src="<?= base_url() ?>/app-assets/js/scripts/customizer.min.js"></script>
     <!-- END ROBUST JS-->
     <!-- BEGIN PAGE LEVEL JS-->
-    <script src="<?= base_url() ?>/app-assets/js/scripts/forms/input-groups.min.js"></script>
     <script src="<?= base_url() ?>/app-assets/js/scripts/extensions/sweet-alerts.min.js"></script>
     <!-- END PAGE LEVEL JS-->
 
