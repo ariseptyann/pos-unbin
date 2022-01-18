@@ -30,7 +30,16 @@
 
             <div class="card-body">
                 <h4 class="card-title"><?= $r->name ?></h4>
-                <p class="card-text"> <?= ($r->discount != NULL ? "<s class='text-danger'>8.000</s>" : '' ) ?> <?= $r->price_sell ?></p>
+                <p class="card-text"> 
+                    <?php
+                        if ($r->discount != NULL) {
+                            echo "<s class='text-danger'>".number_format($r->price_sell,0,'','.')."</s> ";
+                            echo number_format($r->price_sell - $r->discount,0,'','.');
+                        } else {
+                            echo number_format($r->price_sell,0,'','.');
+                        }
+                    ?>
+                </p>
             </div>
         </figure>
     </div>
