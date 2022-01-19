@@ -49,22 +49,27 @@
             }
         }
     } else if ($load == 'getCart') {
-        $productId = $_REQUEST['productId'];
-        $builder = $db->query("SELECT * FROM `products` WHERE `product_id` = '$productId'");
-        $r = $builder->getRow();
+        $cashierId = session()->get('user_id');
+        $builder = $db->query("SELECT `c`.`product_id`, `p`.`name`, `c`.`qty`, `c`.`total`
+            FROM `carts` AS `c` 
+            JOIN `products` AS `p` ON `c`.`product_id` = `p`.`product_id` 
+            WHERE `c`.`cashier_id` = '$cashierId'
+            ORDER BY `c`.`cart_id` DESC
+        ");
+        foreach ($builder->getResult() as $key => $r) {
 ?>
 
     <div class="row mb-1">
-        <input type="hidden" name="product_id" value="<?= $productId ?>">
+        <input type="hidden" name="product_id" value="<?= $r->product_id ?>">
         <div class="col-md-8"><?= $r->name ?></div>
         <div class="col-md-4">
-            <?= number_format($r->price_sell,0,'','.'); ?>
-            <center><button class="btn btn-danger btn-sm" onclick="deleteCart(<?= $productId ?>)"><i class="ft-trash-2"></i></button></center>
+            <?= number_format($r->total,0,'','.'); ?>
+            <center><button class="btn btn-danger btn-sm" onclick="deleteCart(<?= $r->product_id ?>)"><i class="ft-trash-2"></i></button></center>
         </div>
     </div>
     <fieldset>
         <div class="input-group">
-            <input type="text" name="qty" class="touchspin-color text-center" value="0" data-bts-button-down-class="btn btn-info" data-bts-button-up-class="btn btn-info"/>
+            <input type="text" name="qty" class="touchspin-color text-center" value="<?= $r->qty ?>" data-bts-button-down-class="btn btn-info" data-bts-button-up-class="btn btn-info"/>
         </div>
     </fieldset>
     <hr>
@@ -74,6 +79,7 @@
     <script src="<?= base_url() ?>/app-assets/js/scripts/forms/input-groups.min.js"></script>
 
 <?php
+        }
     } else {
         # code...
     }

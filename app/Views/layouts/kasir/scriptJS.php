@@ -28,6 +28,10 @@ $(function() {
       });
     });
 
+    if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+        deleteAllCart();
+    }
+
 });
 
 function beep() {
@@ -38,25 +42,53 @@ function beep() {
 function addCart(productId) {
     beep();
     if (productId != '') {
-        var cartData;
-        $.ajax({ 
-            type: "GET",
-            url: "<?= site_url('kasir/loadData?load=getCart') ?>",
-            data: {
-                productId: productId,
-            },
-            async: false,
-            success : function(response){
-                cartData = response;
-            }
-        });
-        $('.cart').prepend("<div id='itemCart"+productId+"'>"+cartData+"</div>");
+
+        var cashierId = $("#cashier_id").val();
+        var customerId = $("#customer_id").val();
+        var noOrder = $("#no_order").val();
+        if (noOrder == '') {
+ 			swal('', "No Order wajib diisi!",'error');
+ 		} else {
+            $.post('<?= base_url() ?>/kasir/addCart', {
+ 				cashier_id: cashierId,
+ 				product_id: productId,
+ 				customer_id: customerId,
+ 				no_order: noOrder
+ 			}, function(e) {
+                if (e.st == 0) {
+                    swal('',"Produk tidak ada!",'error');
+                }else if (e.st == 2) {
+                    swal('',"No Order sudah ada!",'error');
+                }else{
+                    
+                    $("#no_order").attr('disabled', 'disabled');
+                    $("#customer").attr('disabled', 'disabled');
+                    $('.cart').load("<?= site_url('kasir/loadData?load=getCart') ?>");
+                    $('.cartTotalItem').html(e.totalItem+' Item');
+                    $('.cartTotalPrice').html(e.totalPrice);
+
+                }
+            
+            }, 'json');
+        }
+
     }
 }
 
 function deleteCart(productId) {
     beep();
     $('#itemCart'+productId).remove();
+}
+
+function deleteAllCart() {
+    beep();
+    var cashierId = $("#cashier_id").val();
+    $.post('<?= base_url() ?>/kasir/deleteAllCart', {
+ 		cashier_id: cashierId
+ 	}, function(e) {
+        
+    
+    }, 'json');
 }
 
 </script>

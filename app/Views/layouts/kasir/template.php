@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/app-assets/vendors/css/forms/icheck/custom.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/app-assets/vendors/css/ui/prism.min.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/app-assets/vendors/css/extensions/sweetalert.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/app-assets/vendors/css/ui/jquery-ui.min.css">
     <!-- END VENDOR CSS-->
     <!-- BEGIN ROBUST CSS-->
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/app-assets/css/app.min.css">
@@ -124,26 +125,32 @@
                     <!-- Form sample -->
                     <div class="sidebar-category">
                         <div class="category-title pb-1">
-                            <h6>1 Item</h6>
+                            <h6 class="cartTotalItem">0 Item</h6>
                         </div>
                         <!-- <form action="#" class="category-content"> -->
+
+                            <!-- BEGIN CUSTOMER  -->
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" placeholder="No Order">
+                                        <input type="text" class="form-control" placeholder="No Order" id="no_order">
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" placeholder="Customer">
+                                        <input type="hidden" id="cashier_id" value="<?= session()->get('user_id') ?>" readonly>
+                                        <input type="hidden" id="customer_id" readonly>
+                                        <input type="text" class="form-control" placeholder="Customer" id="customer">
                                     </div>
                                 </div>
                             </div>
+                            <!-- END CUSTOMER  -->
 
                             <!-- BEGIN ITEM CART  -->
-                            <div class="form-group cart">
-                                <div class="row font-weight-bold">
-                                    <div class="col-md-6">Total</div>
-                                    <div class="col-md-6 text-right">7.500</div>
-                                </div>
+                            <div class="form-group">
+                              <div class="cart"> </div>
+                              <div class="row font-weight-bold">
+                                  <div class="col-md-6">Total</div>
+                                  <div class="col-md-6 text-right cartTotalPrice">0</div>
+                              </div>
                             </div>
                             <!-- END ITEM CART  -->
 
@@ -250,6 +257,7 @@
     <!-- BEGIN PAGE VENDOR JS-->
     <script src="<?= base_url() ?>/app-assets/vendors/js/ui/prism.min.js"></script>
     <script src="<?= base_url() ?>/app-assets/vendors/js/extensions/sweetalert.min.js"></script>
+    <script src="<?= base_url() ?>/app-assets/js/core/libraries/jquery_ui/jquery-ui.min.js"></script>
     <!-- END PAGE VENDOR JS-->
     <!-- BEGIN ROBUST JS-->
     <script src="<?= base_url() ?>/app-assets/js/core/app-menu.min.js"></script>
