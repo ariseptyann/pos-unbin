@@ -20,6 +20,9 @@ class Carts extends Migration
             'customer_id' => [
                 'type' => 'INT',
             ],
+            'product_id' => [
+                'type' => 'INT',
+            ],
             'no_order' => [
                 'type' => 'VARCHAR',
                 'constraint' => '100',
