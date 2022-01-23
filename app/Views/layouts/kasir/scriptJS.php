@@ -32,11 +32,49 @@ $(function() {
         deleteAllCart();
     }
 
+    $('.iptPrice').mask('000.000.000.000.000', {reverse: true});
+
 });
 
 function beep() {
     var sound = document.getElementById("audio");
     sound.play();
+}
+
+function formatPrice(price) {
+  if (price === null) {
+    return '0.00'; 
+  } else {
+    price = price.toString();
+    var harga = price.split('.')[0];
+    harga = new Intl.NumberFormat('id-ID').format(harga);
+    return harga; 
+  }
+}
+
+function handlePrice(price) {
+  return price.toString().replaceAll('.','');
+}
+
+function countTotalPrice() {
+    var total = $('#totalPrice').val();
+    if (total == '') {
+        total = 0; 
+    }
+    total = handlePrice(total);
+
+    var diskon = $('#diskon').val();
+    if (diskon == '') {
+        diskon = 0; 
+    }
+    diskon = handlePrice(diskon);
+
+    var subTotal = parseInt(total) - parseInt(diskon);
+    if (subTotal < 1) {
+        subTotal = 0; 
+    }
+    
+    $('#subTotalPrice').val(formatPrice(subTotal));
 }
 
 function addCart(productId) {
@@ -65,6 +103,9 @@ function addCart(productId) {
                     $('.cart').load("<?= site_url('kasir/loadData?load=getCart') ?>");
                     $('.cartTotalItem').html(e.totalItem+' Item');
                     $('.cartTotalPrice').html(e.totalPrice);
+                    $('#totalPrice').val(e.totalPrice);
+                    $('#subTotalPrice').val(e.totalPrice);
+                    $(".bayar").removeAttr('disabled');
                 }
             }, 'json');
         }
@@ -118,6 +159,8 @@ function deleteCart(productId) {
                         $('.cart').load("<?= site_url('kasir/loadData?load=getCart') ?>");
                         $('.cartTotalItem').html(e.totalItem+' Item');
                         $('.cartTotalPrice').html(e.totalPrice);
+                        $('#totalPrice').val(e.totalPrice);
+                        $('#subTotalPrice').val(e.totalPrice);
                     }
                 }, 'json');
 

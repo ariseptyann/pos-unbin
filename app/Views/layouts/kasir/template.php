@@ -160,14 +160,14 @@
                                 </div>
                                 <div class="col-6">
                                     
-                                  <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#iconForm">Bayar</button>
+                                  <button class="btn btn-primary btn-block bayar" data-toggle="modal" data-target="#pembayaranModal" disabled>Bayar</button>
 
                                   <!-- Modal Pembayaran -->
-                                  <div class="modal fade text-left" id="iconForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel34" aria-hidden="true">
+                                  <div class="modal fade text-left" id="pembayaranModal" tabindex="-1" role="dialog" aria-labelledby="pembayaran" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                       <div class="modal-header">
-                                      <h3 class="modal-title" id="myModalLabel34">Pembayaran</h3>
+                                      <h3 class="modal-title" id="pembayaran">Pembayaran</h3>
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                       </button>
@@ -178,7 +178,7 @@
                                           <div class="col-md-4"> Total </div>
                                           <div class="col-md-8">
                                             <div class="form-group position-relative has-icon-left">
-                                              <input type="text" placeholder="Total" class="form-control" value="15.000" readonly="readonly">
+                                              <input type="text" placeholder="Total" class="form-control" id="totalPrice" readonly="readonly">
                                               <div class="form-control-position">
                                                 <i class="ft-file font-medium-5 line-height-1 text-muted icon-align"></i>
                                               </div>
@@ -188,7 +188,7 @@
                                           <div class="col-md-4"> Diskon </div>
                                           <div class="col-md-8">
                                             <div class="form-group position-relative has-icon-left">
-                                              <input type="text" placeholder="Diskon" class="form-control" value="0">
+                                              <input type="text" placeholder="Diskon" class="form-control iptPrice" value="0" id="diskon" onkeyup="countTotalPrice()">
                                               <div class="form-control-position">
                                                 <i class="ft-file-minus font-medium-5 line-height-1 text-muted icon-align"></i>
                                               </div>
@@ -198,7 +198,7 @@
                                           <div class="col-md-4"> Sub Total </div>
                                           <div class="col-md-8">
                                             <div class="form-group position-relative has-icon-left">
-                                              <input type="text" placeholder="Sub Total" class="form-control" value="15.000" readonly="readonly">
+                                              <input type="text" placeholder="Sub Total" class="form-control" id="subTotalPrice" readonly="readonly">
                                               <div class="form-control-position">
                                                 <i class="ft-file-text font-medium-5 line-height-1 text-muted icon-align"></i>
                                               </div>
@@ -257,6 +257,7 @@
     <!-- BEGIN PAGE VENDOR JS-->
     <script src="<?= base_url() ?>/app-assets/vendors/js/ui/prism.min.js"></script>
     <script src="<?= base_url() ?>/app-assets/vendors/js/extensions/sweetalert.min.js"></script>
+    <script src="<?= base_url() ?>/app-assets/js/jquery-mask.min.js"></script>
     <script src="<?= base_url() ?>/app-assets/js/core/libraries/jquery_ui/jquery-ui.min.js"></script>
     <!-- END PAGE VENDOR JS-->
     <!-- BEGIN ROBUST JS-->
