@@ -65,6 +65,7 @@ class Kasir extends BaseController
         $product_id = $this->request->getVar('product_id');
         $customer_id = $this->request->getVar('customer_id');
         $no_order = $this->request->getVar('no_order');
+        $dateNow = date('Y-m-d H:i:s');
 
         $product = $this->db()->query("SELECT * FROM `products` WHERE `product_id` = '$product_id'")->getRow();
         if (empty($product)) {
@@ -83,7 +84,8 @@ class Kasir extends BaseController
                     $total = $qty * $productCart->price;
                     $this->db()->query("UPDATE `carts` SET
                         `qty` = '$qty',
-                        `total` = '$total'
+                        `total` = '$total',
+                        `updated_at` = '$dateNow'
                         WHERE `cashier_id` = '$cashier_id' AND `customer_id` = '$customer_id' AND `product_id` = '$product_id' AND `no_order` = '$no_order'
                     ");
                 } else {
@@ -95,19 +97,50 @@ class Kasir extends BaseController
                     }
                     
                     $total = $qty * $priceSell;
-                    $this->db()->query("INSERT INTO `carts` (cashier_id,customer_id,product_id,no_order,qty,price,total) VALUES (
+                    $this->db()->query("INSERT INTO `carts` (cashier_id,customer_id,product_id,no_order,qty,price,total,created_at) VALUES (
                         '$cashier_id',
                         '$customer_id',
                         '$product_id',
                         '$no_order',
                         '$qty',
                         '$priceSell',
-                        '$total'
+                        '$total',
+                        '$dateNow'
                     )");
                 }
 
             }
 
+        }
+        
+        $cart = $this->db()->query("SELECT COUNT(`cart_id`) AS `total_item`, SUM(`total`) AS `total_price` FROM `carts` WHERE `cashier_id` = '$cashier_id'")->getRow();
+        echo json_encode(array(
+            'st' => $st,
+            'totalItem' => number_format($cart->total_item,0,'','.'),
+            'totalPrice' => number_format($cart->total_price,0,'','.'),
+        ));
+        die();
+    }
+
+    public function deleteCart()
+    {
+        $cashier_id = $this->request->getVar('cashier_id');
+        $product_id = $this->request->getVar('product_id');
+        $customer_id = $this->request->getVar('customer_id');
+        $no_order = $this->request->getVar('no_order');
+        $dateNow = date('Y-m-d H:i:s');
+
+        $product = $this->db()->query("SELECT * FROM `products` WHERE `product_id` = '$product_id'")->getRow();
+        if (empty($product)) {
+            $st = 0;
+        } else {
+            $productCart = $this->db()->query("SELECT * FROM `carts` WHERE `cashier_id` != '$cashier_id' AND `no_order` = '$no_order' AND `product_id` = '$product_id'")->getRow();
+            if (!empty($productCart)) {
+                $st = 2;
+            } else {
+                $st = 1;
+                $this->db()->query("DELETE FROM `carts` WHERE `cashier_id` = '$cashier_id' AND `customer_id` = '$customer_id' AND `product_id` = '$product_id' AND `no_order` = '$no_order'");
+            }
         }
         
         $cart = $this->db()->query("SELECT COUNT(`cart_id`) AS `total_item`, SUM(`total`) AS `total_price` FROM `carts` WHERE `cashier_id` = '$cashier_id'")->getRow();

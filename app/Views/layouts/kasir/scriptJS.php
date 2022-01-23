@@ -60,24 +60,103 @@ function addCart(productId) {
                 }else if (e.st == 2) {
                     swal('',"No Order sudah ada!",'error');
                 }else{
-                    
                     $("#no_order").attr('disabled', 'disabled');
                     $("#customer").attr('disabled', 'disabled');
                     $('.cart').load("<?= site_url('kasir/loadData?load=getCart') ?>");
                     $('.cartTotalItem').html(e.totalItem+' Item');
                     $('.cartTotalPrice').html(e.totalPrice);
-
                 }
-            
             }, 'json');
         }
 
+    }else{
+        swal('',"Produk tidak ada!",'error');
     }
 }
 
 function deleteCart(productId) {
     beep();
-    $('#itemCart'+productId).remove();
+	swal({
+	    title: "Apakah anda yakin?",
+	    text: "",
+	    icon: "warning",
+	    showCancelButton: true,
+	    buttons: {
+            cancel: {
+                text: "Batal",
+                value: null,
+                visible: true,
+                className: "btn-danger",
+                closeModal: true,
+            },
+            confirm: {
+                text: "Ok",
+                value: true,
+                visible: true,
+                className: "btn-primary",
+                closeModal: true
+            }
+	    }
+	}).then(isConfirm => {
+	    if (isConfirm) {
+            if (productId != '') {
+
+                var cashierId = $("#cashier_id").val();
+                var customerId = $("#customer_id").val();
+                var noOrder = $("#no_order").val();
+                $.post('<?= base_url() ?>/kasir/deleteCart', {
+                    cashier_id: cashierId,
+                    product_id: productId,
+                    customer_id: customerId,
+                    no_order: noOrder
+                }, function(e) {
+                    if (e.st == 0) {
+                        swal('',"Produk tidak ada!",'error');
+                    }else if (e.st == 2) {
+                        swal('',"Pesanan tidak ada!",'error');
+                    }else{
+                        $('.cart').load("<?= site_url('kasir/loadData?load=getCart') ?>");
+                        $('.cartTotalItem').html(e.totalItem+' Item');
+                        $('.cartTotalPrice').html(e.totalPrice);
+                    }
+                }, 'json');
+
+            }else{
+                swal('',"Produk tidak ada!",'error');
+            }
+	    }
+	});
+}
+
+function resetCarts() {
+    beep();
+	swal({
+	    title: "Apakah anda yakin?",
+	    text: "",
+	    icon: "warning",
+	    showCancelButton: true,
+	    buttons: {
+            cancel: {
+                text: "Batal",
+                value: null,
+                visible: true,
+                className: "btn-danger",
+                closeModal: true,
+            },
+            confirm: {
+                text: "Ok",
+                value: true,
+                visible: true,
+                className: "btn-primary",
+                closeModal: true
+            }
+	    }
+	}).then(isConfirm => {
+	    if (isConfirm) {
+            deleteAllCart();
+            location.reload();
+	    }
+	});
 }
 
 function deleteAllCart() {

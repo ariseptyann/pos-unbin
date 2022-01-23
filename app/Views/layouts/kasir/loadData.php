@@ -56,6 +56,10 @@
             WHERE `c`.`cashier_id` = '$cashierId'
             ORDER BY `c`.`cart_id` DESC
         ");
+        if (empty($builder->getResult())) {
+            echo 'Pesanan tidak ada';
+        } else {
+        
         foreach ($builder->getResult() as $key => $r) {
 ?>
 
@@ -79,7 +83,7 @@
     <script src="<?= base_url() ?>/app-assets/js/scripts/forms/input-groups.min.js"></script>
 
 <?php
-        }
+        } }
     } else {
         # code...
     }

@@ -156,7 +156,7 @@
 
                             <div class="row">
                                 <div class="col-6">
-                                  <button type="reset" class="btn btn-warning btn-block">Reset</button>
+                                  <button onclick="resetCarts()" class="btn btn-warning btn-block">Reset</button>
                                 </div>
                                 <div class="col-6">
                                     
