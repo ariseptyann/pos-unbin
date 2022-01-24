@@ -113,9 +113,12 @@ class Kasir extends BaseController
 
         }
         
-        $cart = $this->db()->query("SELECT COUNT(`cart_id`) AS `total_item`, SUM(`total`) AS `total_price` FROM `carts` WHERE `cashier_id` = '$cashier_id'")->getRow();
+        $cart = $this->db()->query("SELECT `cashier_id`, `customer_id`, `no_order`, COUNT(`cart_id`) AS `total_item`, SUM(`total`) AS `total_price` FROM `carts` WHERE `cashier_id` = '$cashier_id'")->getRow();
         echo json_encode(array(
             'st' => $st,
+            'cashier_id' => $cart->cashier_id,
+            'customer_id' => $cart->customer_id,
+            'no_order' => $cart->no_order,
             'totalItem' => number_format($cart->total_item,0,'','.'),
             'totalPrice' => number_format($cart->total_price,0,'','.'),
         ));
@@ -163,6 +166,72 @@ class Kasir extends BaseController
         }
         echo json_encode(array(
             'st' => $st
+        ));
+        die();
+    }
+
+    public function generateNoTransaction($kode)
+	{
+		$kasir = session()->get('user_id');
+		$depan = $kasir . "/" . $kode . "/" . date("ym");
+		$q = $this->db()->query("SELECT MAX(RIGHT(no_transaction,5)) AS idmax FROM transaction_headers WHERE no_transaction LIKE '$depan%'");
+		$kd = "";
+		foreach ($q->getResult() as $k) {
+			if ($k->idmax == null) {
+				$kd = "00001";
+			} else {
+				$tmp = ((int)$k->idmax) + 100001;
+				$kd2 = sprintf("%s", $tmp);
+				$kd = substr($kd2, 1);
+			}
+		}
+		return $depan . $kd;
+	}
+
+    public function handlePrice($price){
+        return str_replace('.','',$price);
+    }
+
+    public function payment()
+    {
+        $cashier_id = $this->request->getVar('cashier_id');
+        $customer_id = $this->request->getVar('customer_id');
+        $no_order = $this->request->getVar('no_order');
+        $dateNow = date('Y-m-d H:i:s');
+        $no_transaction = $this->generateNoTransaction('POS');
+        $discount = $this->request->getVar('discount');
+        $discount = $this->handlePrice($discount);
+        $total = $this->request->getVar('total');
+        $total = $this->handlePrice($total);
+
+        $carts = $this->db()->query("SELECT * FROM `carts` WHERE `cashier_id` = '$cashier_id' AND `no_order` = '$no_order' AND `customer_id` = '$customer_id'")->getResult();
+        if (empty($carts)) {
+            $st = 0;
+        } else {
+            $this->db()->query("INSERT INTO `transaction_headers` (`user_id`,`no_transaction`,`discount`,`total`,`created_at`) VALUES (
+                '$customer_id',
+                '$no_transaction',
+                '$discount',
+                '$total',
+                '$dateNow'
+            )");
+            $transaction_header_id = $this->db()->insertID();
+
+            foreach ($carts as $key => $c) {
+                $this->db()->query("INSERT INTO `transaction_details` (`transaction_header_id`,`product_id`,`qty`,`price`,`total`,`created_at`) VALUES (
+                    '$transaction_header_id',
+                    '$c->product_id',
+                    '$c->qty',
+                    '$c->price',
+                    '$c->total',
+                    '$dateNow'
+                )");
+            }
+            $this->db()->query("DELETE FROM `carts` WHERE `cashier_id` = '$cashier_id' AND `no_order` = '$no_order' AND `customer_id` = '$customer_id'");
+            $st = 1;
+        }
+        echo json_encode(array(
+            'st' => $st,
         ));
         die();
     }

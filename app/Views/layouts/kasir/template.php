@@ -127,7 +127,6 @@
                         <div class="category-title pb-1">
                             <h6 class="cartTotalItem">0 Item</h6>
                         </div>
-                        <!-- <form action="#" class="category-content"> -->
 
                             <!-- BEGIN CUSTOMER  -->
                             <div class="form-group">
@@ -167,50 +166,58 @@
                                     <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                       <div class="modal-header">
-                                      <h3 class="modal-title" id="pembayaran">Pembayaran</h3>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
+                                        <h3 class="modal-title" id="pembayaran">Pembayaran</h3>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
                                       </div>
-                                      <div class="modal-body">
-                                        <div class="row">
 
-                                          <div class="col-md-4"> Total </div>
-                                          <div class="col-md-8">
-                                            <div class="form-group position-relative has-icon-left">
-                                              <input type="text" placeholder="Total" class="form-control" id="totalPrice" readonly="readonly">
-                                              <div class="form-control-position">
-                                                <i class="ft-file font-medium-5 line-height-1 text-muted icon-align"></i>
+                                      <form action="<?= site_url('kasir/payment') ?>" method="post" class="category-content" id="payment">
+                                        <input type="hidden" name="cashier_id" id="cashier_id_pay" readonly>
+                                        <input type="hidden" name="customer_id" id="customer_id_pay" readonly>
+                                        <input type="hidden" name="no_order" id="no_order_pay" readonly>
+                                        <?= csrf_field(); ?>
+                                        <div class="modal-body">
+                                          <div class="row">
+                                            
+                                            <div class="col-md-4"> Total </div>
+                                            <div class="col-md-8">
+                                              <div class="form-group position-relative has-icon-left">
+                                                <input type="text" placeholder="Total" class="form-control" name="total" id="totalPrice" readonly="readonly">
+                                                <div class="form-control-position">
+                                                  <i class="ft-file font-medium-5 line-height-1 text-muted icon-align"></i>
+                                                </div>
                                               </div>
                                             </div>
-                                          </div>
 
-                                          <div class="col-md-4"> Diskon </div>
-                                          <div class="col-md-8">
-                                            <div class="form-group position-relative has-icon-left">
-                                              <input type="text" placeholder="Diskon" class="form-control iptPrice" value="0" id="diskon" onkeyup="countTotalPrice()">
-                                              <div class="form-control-position">
-                                                <i class="ft-file-minus font-medium-5 line-height-1 text-muted icon-align"></i>
+                                            <div class="col-md-4"> Diskon </div>
+                                            <div class="col-md-8">
+                                              <div class="form-group position-relative has-icon-left">
+                                                <input type="text" placeholder="Diskon" class="form-control iptPrice" name="discount" value="0" id="diskon" onkeyup="countTotalPrice()">
+                                                <div class="form-control-position">
+                                                  <i class="ft-file-minus font-medium-5 line-height-1 text-muted icon-align"></i>
+                                                </div>
                                               </div>
                                             </div>
-                                          </div>
 
-                                          <div class="col-md-4"> Sub Total </div>
-                                          <div class="col-md-8">
-                                            <div class="form-group position-relative has-icon-left">
-                                              <input type="text" placeholder="Sub Total" class="form-control" id="subTotalPrice" readonly="readonly">
-                                              <div class="form-control-position">
-                                                <i class="ft-file-text font-medium-5 line-height-1 text-muted icon-align"></i>
+                                            <div class="col-md-4"> Sub Total </div>
+                                            <div class="col-md-8">
+                                              <div class="form-group position-relative has-icon-left">
+                                                <input type="text" placeholder="Sub Total" class="form-control" id="subTotalPrice" readonly="readonly">
+                                                <div class="form-control-position">
+                                                  <i class="ft-file-text font-medium-5 line-height-1 text-muted icon-align"></i>
+                                                </div>
                                               </div>
                                             </div>
+
                                           </div>
 
                                         </div>
-                                      </div>
-                                      <div class="modal-footer">
-                                        <input type="reset" class="btn btn-outline-secondary btn-lg" data-dismiss="modal" value="Kembali">
-                                        <input type="submit" class="btn btn-outline-primary btn-lg" value="Bayar">
-                                      </div>
+                                        <div class="modal-footer">
+                                          <input type="reset" class="btn btn-outline-secondary btn-lg" data-dismiss="modal" value="Kembali">
+                                          <input type="submit" class="btn btn-outline-primary btn-lg" value="Bayar">
+                                        </div>
+                                      </form>
 
                                     </div>
                                     </div>
@@ -219,7 +226,6 @@
 
                                 </div>
                             </div>
-                        <!-- </form> -->
                     </div>
                     <!-- /form sample -->
                 </div>

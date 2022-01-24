@@ -34,6 +34,35 @@ $(function() {
 
     $('.iptPrice').mask('000.000.000.000.000', {reverse: true});
 
+    $('#payment').submit(function() {
+        $.post($('#payment').attr('action'), $('#payment').serialize(), function(data) {
+            if (data.st == 0) {
+                swal('',"Pesanan tidak ada!",'error');
+            } else {
+                swal({
+                    title: "Transaksi berhasil.",
+                    text: "",
+                    icon: "success",
+                    showCancelButton: false,
+                    buttons: {
+                        confirm: {
+                            text: "Ok",
+                            value: true,
+                            visible: true,
+                            className: "btn-primary",
+                            closeModal: true
+                        }
+                    }
+                }).then(isConfirm => {
+                    if (isConfirm) {
+                        location.reload();
+                    }
+                });
+            }
+        }, 'json');
+        return false;
+    });
+
 });
 
 function beep() {
@@ -105,6 +134,9 @@ function addCart(productId) {
                     $('.cartTotalPrice').html(e.totalPrice);
                     $('#totalPrice').val(e.totalPrice);
                     $('#subTotalPrice').val(e.totalPrice);
+                    $("#cashier_id_pay").val(e.cashier_id);
+                    $("#customer_id_pay").val(e.customer_id);
+                    $("#no_order_pay").val(e.no_order);
                     $(".bayar").removeAttr('disabled');
                 }
             }, 'json');
