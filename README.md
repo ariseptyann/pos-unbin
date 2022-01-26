@@ -14,7 +14,8 @@ https://github.com/ariseptyann/robust-template
 
 ## Installation & updates
 
-jalankan `composer install` setelah melakukan clone dari github
+- jalankan `composer install` setelah melakukan clone dari github
+- jika menemukan masalah versi composer atau package, jalankan `composer update --ignore-platform-req=ext-intl`
 
 ## Setup
 

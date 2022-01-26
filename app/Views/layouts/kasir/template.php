@@ -16,7 +16,8 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/app-assets/css/vendors.min.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/app-assets/vendors/css/forms/icheck/custom.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/app-assets/vendors/css/ui/prism.min.css">
-    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/app-assets/vendors/css/forms/spinner/jquery.bootstrap-touchspin.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/app-assets/vendors/css/extensions/sweetalert.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/app-assets/vendors/css/ui/jquery-ui.min.css">
     <!-- END VENDOR CSS-->
     <!-- BEGIN ROBUST CSS-->
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/app-assets/css/app.min.css">
@@ -32,6 +33,8 @@
 </head>
 <body class="vertical-layout vertical-menu 1-column   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-col="1-column">
 
+  <audio id="audio" src="<?php echo base_url() ?>/app-assets/beep.wav" autostart="false"></audio>
+
   <!-- Modal Login -->
 	<div class="modal fade text-left" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="modalLabelLogin" aria-hidden="true">
 	  <div class="modal-dialog" role="document">
@@ -39,27 +42,30 @@
 		  <div class="modal-header">
 			<h3 class="modal-title" id="modalLabelLogin">Silakan Login</h3>
 		  </div>
-		  <form>
-			<div class="modal-body">
-				<label>Username: </label>
-				<div class="form-group position-relative has-icon-left">
-					<input type="text" placeholder="Username" class="form-control">
-					<div class="form-control-position">
-						<i class="ft-mail font-medium-5 line-height-1 text-muted icon-align"></i>
-					</div>
-				</div>
-				<label>Password: </label>
-				<div class="form-group position-relative has-icon-left">
-					<input type="password" placeholder="Password" class="form-control">
-					<div class="form-control-position">
-						<i class="ft-lock font-large-1 line-height-1 text-muted icon-align"></i>
-					</div>
-				</div>
-			</div>
-			<div class="modal-footer">
-				<button data-dismiss="modal" aria-label="Close" class="btn btn-outline-primary btn-lg">Login</button>
-			</div>
+
+		  <form action="<?= site_url('kasir/login') ?>" method="post">
+        <?= csrf_field(); ?>
+        <div class="modal-body">
+          <label>Username: </label>
+          <div class="form-group position-relative has-icon-left">
+            <input type="text" placeholder="Username" class="form-control" name="username" required>
+            <div class="form-control-position">
+              <i class="ft-mail font-medium-5 line-height-1 text-muted icon-align"></i>
+            </div>
+          </div>
+          <label>Password: </label>
+          <div class="form-group position-relative has-icon-left">
+            <input type="password" placeholder="Password" class="form-control" name="password" required>
+            <div class="form-control-position">
+              <i class="ft-lock font-large-1 line-height-1 text-muted icon-align"></i>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-outline-primary btn-lg">Login</button>
+        </div>
 		  </form>
+
 		</div>
 	  </div>
 	</div>
@@ -86,20 +92,20 @@
               <li class="nav-item d-none d-md-block"><a class="nav-link nav-link-expand" href="#"><i class="ficon ft-maximize"></i></a></li>
               <li class="nav-item nav-search"><a class="nav-link nav-link-search" href="#"><i class="ficon ft-search"></i></a>
                 <div class="search-input">
-                  <input class="input" type="text" placeholder="Pencarian Produk...">
+                  <input class="input" type="text" placeholder="Pencarian Produk..." name="pencarian">
                 </div>
               </li>
             </ul>
             <ul class="nav navbar-nav float-right">         
               <li class="dropdown dropdown-user nav-item">
                   <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                    <span class="avatar avatar-online"><img src="<?= base_url() ?>/app-assets/images/portrait/small/avatar-s-1.png" alt="avatar">
+                    <span class="avatar avatar-online"><img src="<?= base_url() ?>/app-assets/images/portrait/small/avatar-s-default.png" alt="<?= session()->get('name'); ?>">
                         <i></i>
                     </span>
-                    <span class="user-name">John Doe</span>
+                    <span class="user-name"><?= session()->get('name'); ?></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                  <a class="dropdown-item" href="javascript:void(0)"><i class="ft-power"></i> Logout</a>
+                  <a class="dropdown-item" href="/kasir/logout"><i class="ft-power"></i> Logout</a>
                 </div>
               </li>
             </ul>
@@ -119,100 +125,99 @@
                     <!-- Form sample -->
                     <div class="sidebar-category">
                         <div class="category-title pb-1">
-                            <h6>1 Item</h6>
+                            <h6 class="cartTotalItem">0 Item</h6>
                         </div>
-                        <!-- <form action="#" class="category-content"> -->
+
+                            <!-- BEGIN CUSTOMER  -->
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" placeholder="No Order">
+                                        <input type="text" class="form-control" placeholder="No Order" id="no_order">
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" placeholder="Customer">
+                                        <input type="hidden" id="cashier_id" value="<?= session()->get('user_id') ?>" readonly>
+                                        <input type="hidden" id="customer_id" readonly>
+                                        <input type="text" class="form-control" placeholder="Customer" id="customer">
                                     </div>
                                 </div>
                             </div>
+                            <!-- END CUSTOMER  -->
+
+                            <!-- BEGIN ITEM CART  -->
                             <div class="form-group">
-                                
-                                <?php for ($i=0; $i < 3; $i++) { ?>
-                                <div class="row mb-1">
-                                    <div class="col-md-8">Tango Wafer Waffle Cranch Chox 130G</div>
-                                    <div class="col-md-4">
-                                        7.500 
-                                        <center><button class="btn btn-danger btn-sm"><i class="ft-trash-2"></i></button></center>
-                                    </div>
-                                </div>
-                                <fieldset>
-                                    <div class="input-group">
-                                        <input type="text" class="touchspin-color text-center" value="55" data-bts-button-down-class="btn btn-info" data-bts-button-up-class="btn btn-info"/>
-                                    </div>
-                                </fieldset>
-                                <hr>
-                                <?php } ?>
-
-                                <div class="row font-weight-bold">
-                                    <div class="col-md-6">Total</div>
-                                    <div class="col-md-6 text-right">7.500</div>
-                                </div>
-
+                              <div class="cart"> </div>
+                              <div class="row font-weight-bold">
+                                  <div class="col-md-6">Total</div>
+                                  <div class="col-md-6 text-right cartTotalPrice">0</div>
+                              </div>
                             </div>
+                            <!-- END ITEM CART  -->
+
                             <div class="row">
                                 <div class="col-6">
-                                  <button type="reset" class="btn btn-warning btn-block">Reset</button>
+                                  <button onclick="resetCarts()" class="btn btn-warning btn-block">Reset</button>
                                 </div>
                                 <div class="col-6">
                                     
-                                  <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#iconForm">Bayar</button>
+                                  <button class="btn btn-primary btn-block bayar" data-toggle="modal" data-target="#pembayaranModal" disabled>Bayar</button>
 
                                   <!-- Modal Pembayaran -->
-                                  <div class="modal fade text-left" id="iconForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel34" aria-hidden="true">
+                                  <div class="modal fade text-left" id="pembayaranModal" tabindex="-1" role="dialog" aria-labelledby="pembayaran" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                       <div class="modal-header">
-                                      <h3 class="modal-title" id="myModalLabel34">Pembayaran</h3>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
+                                        <h3 class="modal-title" id="pembayaran">Pembayaran</h3>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
                                       </div>
-                                      <div class="modal-body">
-                                        <div class="row">
 
-                                          <div class="col-md-4"> Total </div>
-                                          <div class="col-md-8">
-                                            <div class="form-group position-relative has-icon-left">
-                                              <input type="text" placeholder="Total" class="form-control" value="15.000" readonly="readonly">
-                                              <div class="form-control-position">
-                                                <i class="ft-file font-medium-5 line-height-1 text-muted icon-align"></i>
+                                      <form action="<?= site_url('kasir/payment') ?>" method="post" class="category-content" id="payment">
+                                        <input type="hidden" name="cashier_id" id="cashier_id_pay" readonly>
+                                        <input type="hidden" name="customer_id" id="customer_id_pay" readonly>
+                                        <input type="hidden" name="no_order" id="no_order_pay" readonly>
+                                        <?= csrf_field(); ?>
+                                        <div class="modal-body">
+                                          <div class="row">
+                                            
+                                            <div class="col-md-4"> Total </div>
+                                            <div class="col-md-8">
+                                              <div class="form-group position-relative has-icon-left">
+                                                <input type="text" placeholder="Total" class="form-control" name="total" id="totalPrice" readonly="readonly">
+                                                <div class="form-control-position">
+                                                  <i class="ft-file font-medium-5 line-height-1 text-muted icon-align"></i>
+                                                </div>
                                               </div>
                                             </div>
-                                          </div>
 
-                                          <div class="col-md-4"> Diskon </div>
-                                          <div class="col-md-8">
-                                            <div class="form-group position-relative has-icon-left">
-                                              <input type="text" placeholder="Diskon" class="form-control" value="0">
-                                              <div class="form-control-position">
-                                                <i class="ft-file-minus font-medium-5 line-height-1 text-muted icon-align"></i>
+                                            <div class="col-md-4"> Diskon </div>
+                                            <div class="col-md-8">
+                                              <div class="form-group position-relative has-icon-left">
+                                                <input type="text" placeholder="Diskon" class="form-control iptPrice" name="discount" value="0" id="diskon" onkeyup="countTotalPrice()">
+                                                <div class="form-control-position">
+                                                  <i class="ft-file-minus font-medium-5 line-height-1 text-muted icon-align"></i>
+                                                </div>
                                               </div>
                                             </div>
-                                          </div>
 
-                                          <div class="col-md-4"> Sub Total </div>
-                                          <div class="col-md-8">
-                                            <div class="form-group position-relative has-icon-left">
-                                              <input type="text" placeholder="Sub Total" class="form-control" value="15.000" readonly="readonly">
-                                              <div class="form-control-position">
-                                                <i class="ft-file-text font-medium-5 line-height-1 text-muted icon-align"></i>
+                                            <div class="col-md-4"> Sub Total </div>
+                                            <div class="col-md-8">
+                                              <div class="form-group position-relative has-icon-left">
+                                                <input type="text" placeholder="Sub Total" class="form-control" id="subTotalPrice" readonly="readonly">
+                                                <div class="form-control-position">
+                                                  <i class="ft-file-text font-medium-5 line-height-1 text-muted icon-align"></i>
+                                                </div>
                                               </div>
                                             </div>
+
                                           </div>
 
                                         </div>
-                                      </div>
-                                      <div class="modal-footer">
-                                        <input type="reset" class="btn btn-outline-secondary btn-lg" data-dismiss="modal" value="Kembali">
-                                        <input type="submit" class="btn btn-outline-primary btn-lg" value="Bayar">
-                                      </div>
+                                        <div class="modal-footer">
+                                          <input type="reset" class="btn btn-outline-secondary btn-lg" data-dismiss="modal" value="Kembali">
+                                          <input type="submit" class="btn btn-outline-primary btn-lg" value="Bayar">
+                                        </div>
+                                      </form>
 
                                     </div>
                                     </div>
@@ -221,7 +226,6 @@
 
                                 </div>
                             </div>
-                        <!-- </form> -->
                     </div>
                     <!-- /form sample -->
                 </div>
@@ -236,19 +240,7 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
-                            <div class="row">
-                            <?php for ($i=0; $i < 8; $i++) { ?>
-                                <div class="col-md-3" style="cursor:pointer;">
-                                    <figure class="card card-img-top border-grey border-lighten-2" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                                        <img class="gallery-thumbnail card-img-top" src="<?= base_url() ?>/app-assets/images/gallery/2.jpg" alt="Image description" />
-                                        <div class="card-body">
-                                            <h4 class="card-title">Tango Wafer Waffle Cranch Chox 130G</h4>
-                                            <p class="card-text"><s class="text-danger">8.000</s> 7.500</p>
-                                        </div>
-                                    </figure>
-                                </div>
-                            <?php } ?>
-                            </div>
+                            <div class="row" id="getProduct"> </div>
                         </div>
                     </div> 
                 </div>
@@ -270,7 +262,9 @@
     <!-- BEGIN VENDOR JS-->
     <!-- BEGIN PAGE VENDOR JS-->
     <script src="<?= base_url() ?>/app-assets/vendors/js/ui/prism.min.js"></script>
-    <script src="<?= base_url() ?>/app-assets/vendors/js/forms/spinner/jquery.bootstrap-touchspin.js"></script>
+    <script src="<?= base_url() ?>/app-assets/vendors/js/extensions/sweetalert.min.js"></script>
+    <script src="<?= base_url() ?>/app-assets/js/jquery-mask.min.js"></script>
+    <script src="<?= base_url() ?>/app-assets/js/core/libraries/jquery_ui/jquery-ui.min.js"></script>
     <!-- END PAGE VENDOR JS-->
     <!-- BEGIN ROBUST JS-->
     <script src="<?= base_url() ?>/app-assets/js/core/app-menu.min.js"></script>
@@ -278,18 +272,10 @@
     <script src="<?= base_url() ?>/app-assets/js/scripts/customizer.min.js"></script>
     <!-- END ROBUST JS-->
     <!-- BEGIN PAGE LEVEL JS-->
-    <script src="<?= base_url() ?>/app-assets/js/scripts/forms/input-groups.min.js"></script>
+    <script src="<?= base_url() ?>/app-assets/js/scripts/extensions/sweet-alerts.min.js"></script>
     <!-- END PAGE LEVEL JS-->
 
-    <script>
-      $(window).on('load', function() {
-          $('#modalLogin').modal({
-            backdrop: 'static',
-            keyboard: true, 
-            show: true
-          });
-      });
-    </script>
+    <?= include('scriptJS.php') ?>
 
 </body>
 
