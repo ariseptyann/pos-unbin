@@ -28,6 +28,30 @@ $(function() {
       });
     });
 
+    $("#customer").autocomplete({
+        source: function(request, response) {
+            $.post("<?= site_url('kasir/loadData?load=getCustomer') ?>", {
+                term: request.term
+            }, function(data) {
+                response($.map(data, function(item) {
+                    return {
+                        label: item.label,
+                        value: item.label,
+                        id: item.id
+                    }
+                }))
+            }, "json");
+        },
+        minLength: 1,
+        dataType: "json",
+        cache: false,
+        select: function(event, ui) {
+            event.preventDefault();
+            $('#customer_id').val(ui.item.id);
+            $('#customer').val(ui.item.label);
+        },
+    });
+
     if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
         deleteAllCart();
     }

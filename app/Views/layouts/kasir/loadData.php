@@ -48,6 +48,23 @@
 <?php
             }
         }
+    } else if ($load == 'getCustomer') {
+        $term = (!empty($_REQUEST['term']) ? $_REQUEST['term'] : '');
+        $builder = $db->query("SELECT * FROM `users` WHERE `status` = 3 AND `name` LIKE '%$term%' ORDER BY `name` ASC");
+        $data = array();
+		if (count($builder->getResult()) == 0) {
+			$row['id'] = '0';
+			$row['label'] = 'Tidak ada';
+			array_push($data, $row);
+		} else {
+			foreach ($builder->getResult() as $tmp) :
+				$row['id'] = $tmp->user_id;
+				$row['label'] = $tmp->name;
+				array_push($data, $row);
+			endforeach;
+		}
+		echo json_encode($data);
+        die();
     } else if ($load == 'getCart') {
         $cashierId = session()->get('user_id');
         $builder = $db->query("SELECT `c`.`product_id`, `p`.`name`, `c`.`qty`, `c`.`total`
