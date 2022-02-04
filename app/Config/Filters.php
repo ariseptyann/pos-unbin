@@ -6,6 +6,11 @@ use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
 use CodeIgniter\Filters\Honeypot;
+<<<<<<< HEAD
+use CodeIgniter\Filters\InvalidChars;
+use CodeIgniter\Filters\SecureHeaders;
+=======
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
 
 class Filters extends BaseConfig
 {
@@ -16,9 +21,17 @@ class Filters extends BaseConfig
      * @var array
      */
     public $aliases = [
+<<<<<<< HEAD
+        'csrf'          => CSRF::class,
+        'toolbar'       => DebugToolbar::class,
+        'honeypot'      => Honeypot::class,
+        'invalidchars'  => InvalidChars::class,
+        'secureheaders' => SecureHeaders::class,
+=======
         'csrf'     => CSRF::class,
         'toolbar'  => DebugToolbar::class,
         'honeypot' => Honeypot::class,
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
     ];
 
     /**
@@ -31,10 +44,18 @@ class Filters extends BaseConfig
         'before' => [
             // 'honeypot',
             // 'csrf',
+<<<<<<< HEAD
+            // 'invalidchars',
+=======
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
         ],
         'after' => [
             'toolbar',
             // 'honeypot',
+<<<<<<< HEAD
+            // 'secureheaders',
+=======
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
         ],
     ];
 

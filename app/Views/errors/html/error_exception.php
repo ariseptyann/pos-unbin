@@ -195,7 +195,11 @@
 					<tbody>
 						<tr>
 							<td style="width: 10em">Path</td>
+<<<<<<< HEAD
+							<td><?= esc($request->getUri()) ?></td>
+=======
 							<td><?= esc($request->uri) ?></td>
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
 						</tr>
 						<tr>
 							<td>HTTP Method</td>

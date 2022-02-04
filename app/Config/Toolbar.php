@@ -46,6 +46,21 @@ class Toolbar extends BaseConfig
 
     /**
      * --------------------------------------------------------------------------
+<<<<<<< HEAD
+     * Collect Var Data
+     * --------------------------------------------------------------------------
+     *
+     * If set to false var data from the views will not be colleted. Usefull to
+     * avoid high memory usage when there are lots of data passed to the view.
+     *
+     * @var bool
+     */
+    public $collectVarData = true;
+
+    /**
+     * --------------------------------------------------------------------------
+=======
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
      * Max History
      * --------------------------------------------------------------------------
      *

@@ -32,7 +32,10 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+<<<<<<< HEAD
+=======
 $routes->get('/kasir', 'Kasir::index');
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
 
 /*
  * --------------------------------------------------------------------

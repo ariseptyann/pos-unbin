@@ -8,6 +8,18 @@
     "packages": [
         {
             "name": "codeigniter4/framework",
+<<<<<<< HEAD
+            "version": "v4.1.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codeigniter4/framework.git",
+                "reference": "eabd7dc9ac803ac3c7549d1dea939fe98bd0e4db"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codeigniter4/framework/zipball/eabd7dc9ac803ac3c7549d1dea939fe98bd0e4db",
+                "reference": "eabd7dc9ac803ac3c7549d1dea939fe98bd0e4db",
+=======
             "version": "v4.1.5",
             "source": {
                 "type": "git",
@@ -18,6 +30,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/codeigniter4/framework/zipball/27eb447205ebcef68055b12f3bec9b945cc034e4",
                 "reference": "27eb447205ebcef68055b12f3bec9b945cc034e4",
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
                 "shasum": ""
             },
             "require": {
@@ -25,7 +38,11 @@
                 "ext-intl": "*",
                 "ext-json": "*",
                 "ext-mbstring": "*",
+<<<<<<< HEAD
+                "kint-php/kint": "^4.0",
+=======
                 "kint-php/kint": "^3.3",
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
                 "laminas/laminas-escaper": "^2.9",
                 "php": "^7.3 || ^8.0",
                 "psr/log": "^1.1"
@@ -62,6 +79,37 @@
                 "slack": "https://codeigniterchat.slack.com",
                 "source": "https://github.com/codeigniter4/CodeIgniter4"
             },
+<<<<<<< HEAD
+            "time": "2022-01-24T17:41:56+00:00"
+        },
+        {
+            "name": "kint-php/kint",
+            "version": "4.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kint-php/kint.git",
+                "reference": "e64b939f9ceb9620abd982e2a66a3289fcf4e837"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kint-php/kint/zipball/e64b939f9ceb9620abd982e2a66a3289fcf4e837",
+                "reference": "e64b939f9ceb9620abd982e2a66a3289fcf4e837",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "phpspec/prophecy-phpunit": "^2",
+                "phpunit/phpunit": "^9.0",
+                "seld/phar-utils": "^1.0",
+                "symfony/finder": "^3.0 || ^4.0 || ^5.0",
+                "vimeo/psalm": "^4.0"
+            },
+            "suggest": {
+                "kint-php/kint-twig": "Provides d() and s() functions in twig templates"
+=======
             "time": "2021-11-08T15:09:23+00:00"
         },
         {
@@ -97,6 +145,7 @@
                 "symfony/polyfill-ctype": "Replacement for ext-ctype if missing",
                 "symfony/polyfill-iconv": "Replacement for ext-iconv if missing",
                 "symfony/polyfill-mbstring": "Replacement for ext-mbstring if missing"
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
             },
             "type": "library",
             "autoload": {
@@ -117,10 +166,13 @@
                     "homepage": "https://github.com/jnvsor"
                 },
                 {
+<<<<<<< HEAD
+=======
                     "name": "Rokas Šleinius",
                     "homepage": "https://github.com/raveren"
                 },
                 {
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
                     "name": "Contributors",
                     "homepage": "https://github.com/kint-php/kint/graphs/contributors"
                 }
@@ -134,9 +186,15 @@
             ],
             "support": {
                 "issues": "https://github.com/kint-php/kint/issues",
+<<<<<<< HEAD
+                "source": "https://github.com/kint-php/kint/tree/4.1.1"
+            },
+            "time": "2022-01-02T10:30:48+00:00"
+=======
                 "source": "https://github.com/kint-php/kint/tree/master"
             },
             "time": "2019-10-17T18:05:24+00:00"
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
         },
         {
             "name": "laminas/laminas-escaper",
@@ -323,6 +381,18 @@
         },
         {
             "name": "fakerphp/faker",
+<<<<<<< HEAD
+            "version": "v1.18.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FakerPHP/Faker.git",
+                "reference": "2e77a868f6540695cf5ebf21e5ab472c65f47567"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/2e77a868f6540695cf5ebf21e5ab472c65f47567",
+                "reference": "2e77a868f6540695cf5ebf21e5ab472c65f47567",
+=======
             "version": "v1.17.0",
             "source": {
                 "type": "git",
@@ -333,6 +403,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/b85e9d44eae8c52cca7aa0939483611f7232b669",
                 "reference": "b85e9d44eae8c52cca7aa0939483611f7232b669",
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
                 "shasum": ""
             },
             "require": {
@@ -357,7 +428,11 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
+<<<<<<< HEAD
+                    "dev-main": "v1.18-dev"
+=======
                     "dev-main": "v1.17-dev"
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
                 }
             },
             "autoload": {
@@ -382,9 +457,15 @@
             ],
             "support": {
                 "issues": "https://github.com/FakerPHP/Faker/issues",
+<<<<<<< HEAD
+                "source": "https://github.com/FakerPHP/Faker/tree/v1.18.0"
+            },
+            "time": "2022-01-23T17:56:23+00:00"
+=======
                 "source": "https://github.com/FakerPHP/Faker/tree/v1.17.0"
             },
             "time": "2021-12-05T17:14:47+00:00"
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
         },
         {
             "name": "mikey179/vfsstream",
@@ -454,9 +535,12 @@
             "require": {
                 "php": "^7.1 || ^8.0"
             },
+<<<<<<< HEAD
+=======
             "replace": {
                 "myclabs/deep-copy": "self.version"
             },
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
             "require-dev": {
                 "doctrine/collections": "^1.0",
                 "doctrine/common": "^2.6",
@@ -774,6 +858,18 @@
         },
         {
             "name": "phpdocumentor/type-resolver",
+<<<<<<< HEAD
+            "version": "1.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpDocumentor/TypeResolver.git",
+                "reference": "93ebd0014cab80c4ea9f5e297ea48672f1b87706"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/93ebd0014cab80c4ea9f5e297ea48672f1b87706",
+                "reference": "93ebd0014cab80c4ea9f5e297ea48672f1b87706",
+=======
             "version": "1.5.1",
             "source": {
                 "type": "git",
@@ -784,6 +880,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/a12f7e301eb7258bb68acd89d4aefa05c2906cae",
                 "reference": "a12f7e301eb7258bb68acd89d4aefa05c2906cae",
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
                 "shasum": ""
             },
             "require": {
@@ -818,9 +915,15 @@
             "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
             "support": {
                 "issues": "https://github.com/phpDocumentor/TypeResolver/issues",
+<<<<<<< HEAD
+                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.6.0"
+            },
+            "time": "2022-01-04T19:58:01+00:00"
+=======
                 "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.5.1"
             },
             "time": "2021-10-02T14:08:47+00:00"
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
         },
         {
             "name": "phpspec/prophecy",
@@ -1209,6 +1312,18 @@
         },
         {
             "name": "phpunit/phpunit",
+<<<<<<< HEAD
+            "version": "9.5.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/phpunit.git",
+                "reference": "597cb647654ede35e43b137926dfdfef0fb11743"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/597cb647654ede35e43b137926dfdfef0fb11743",
+                "reference": "597cb647654ede35e43b137926dfdfef0fb11743",
+=======
             "version": "9.5.11",
             "source": {
                 "type": "git",
@@ -1219,6 +1334,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/2406855036db1102126125537adb1406f7242fdd",
                 "reference": "2406855036db1102126125537adb1406f7242fdd",
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
                 "shasum": ""
             },
             "require": {
@@ -1296,7 +1412,11 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
+<<<<<<< HEAD
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.13"
+=======
                 "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.11"
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
             },
             "funding": [
                 {
@@ -1308,7 +1428,11 @@
                     "type": "github"
                 }
             ],
+<<<<<<< HEAD
+            "time": "2022-01-24T07:33:35+00:00"
+=======
             "time": "2021-12-25T07:07:57+00:00"
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
         },
         {
             "name": "psr/container",
@@ -2329,6 +2453,22 @@
         },
         {
             "name": "symfony/deprecation-contracts",
+<<<<<<< HEAD
+            "version": "v2.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/deprecation-contracts.git",
+                "reference": "6f981ee24cf69ee7ce9736146d1c57c2780598a8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/6f981ee24cf69ee7ce9736146d1c57c2780598a8",
+                "reference": "6f981ee24cf69ee7ce9736146d1c57c2780598a8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+=======
             "version": "v3.0.0",
             "source": {
                 "type": "git",
@@ -2343,11 +2483,16 @@
             },
             "require": {
                 "php": ">=8.0.2"
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
+<<<<<<< HEAD
+                    "dev-main": "2.5-dev"
+=======
                     "dev-main": "3.0-dev"
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
                 },
                 "thanks": {
                     "name": "symfony/contracts",
@@ -2376,7 +2521,11 @@
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
             "support": {
+<<<<<<< HEAD
+                "source": "https://github.com/symfony/deprecation-contracts/tree/v2.5.0"
+=======
                 "source": "https://github.com/symfony/deprecation-contracts/tree/v3.0.0"
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
             },
             "funding": [
                 {
@@ -2392,6 +2541,22 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
+            "time": "2021-07-12T14:48:14+00:00"
+        },
+        {
+            "name": "symfony/polyfill-ctype",
+            "version": "v1.24.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-ctype.git",
+                "reference": "30885182c981ab175d4d034db0f6f469898070ab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/30885182c981ab175d4d034db0f6f469898070ab",
+                "reference": "30885182c981ab175d4d034db0f6f469898070ab",
+=======
             "time": "2021-11-01T23:48:49+00:00"
         },
         {
@@ -2406,11 +2571,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/46cd95797e9df938fdd2b03693b5fca5e64b01ce",
                 "reference": "46cd95797e9df938fdd2b03693b5fca5e64b01ce",
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1"
             },
+<<<<<<< HEAD
+            "provide": {
+                "ext-ctype": "*"
+            },
+=======
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
             "suggest": {
                 "ext-ctype": "For best performance"
             },
@@ -2455,7 +2627,11 @@
                 "portable"
             ],
             "support": {
+<<<<<<< HEAD
+                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.24.0"
+=======
                 "source": "https://github.com/symfony/polyfill-ctype/tree/v1.23.0"
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
             },
             "funding": [
                 {
@@ -2471,7 +2647,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
+            "time": "2021-10-20T20:35:02+00:00"
+=======
             "time": "2021-02-19T12:13:01+00:00"
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
         },
         {
             "name": "theseer/tokenizer",
@@ -2591,5 +2771,9 @@
         "php": "^7.3 || ^8.0"
     },
     "platform-dev": [],
+<<<<<<< HEAD
+    "plugin-api-version": "2.2.0"
+=======
     "plugin-api-version": "2.1.0"
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
 }
