@@ -17,6 +17,7 @@ use CodeIgniter\Config\AutoloadConfig;
  */
 class Autoload extends AutoloadConfig
 {
+<<<<<<< HEAD
     /**
      * -------------------------------------------------------------------
      * Namespaces
@@ -40,10 +41,13 @@ class Autoload extends AutoloadConfig
      *
      * @var array<string, string>
      */
+=======
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
     public $psr4 = [
         APP_NAMESPACE => APPPATH, // For custom app namespace
         'Config'      => APPPATH . 'Config',
     ];
+<<<<<<< HEAD
 
     /**
      * -------------------------------------------------------------------
@@ -83,5 +87,9 @@ class Autoload extends AutoloadConfig
      *
      * @var array<int, string>
      */
+=======
+    public $classmap = [];
+
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
     public $files = [];
 }

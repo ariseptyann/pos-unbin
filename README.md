@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # CodeIgniter 4 Application Starter
 
 ## What is CodeIgniter?
@@ -61,3 +62,28 @@ Additionally, make sure that the following extensions are enabled in your PHP:
 - [mbstring](http://php.net/manual/en/mbstring.installation.php)
 - [mysqlnd](http://php.net/manual/en/mysqlnd.install.php)
 - xml (enabled by default - don't turn it off)
+=======
+# Aplikasi POS Web Base Unbin
+
+## Nama kelompok
+1. Ari Septyan Nurmawan
+2. Aditia Abdillah
+3. Angga Aldiansyah
+4. Diaz Nantama
+5. Genta Haetami
+6. Hira Maulana
+7. Lucky Lukman
+
+## Template Bootstrap
+https://github.com/ariseptyann/robust-template
+
+## Installation & updates
+
+- jalankan `composer install` setelah melakukan clone dari github
+- jika menemukan masalah versi composer atau package, jalankan `composer update --ignore-platform-req=ext-intl`
+
+## Setup
+
+1. Setting nama database sesuai yg ada di App/Config/Database
+2. Jalankan `php spark migrate` di terminal anda
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71

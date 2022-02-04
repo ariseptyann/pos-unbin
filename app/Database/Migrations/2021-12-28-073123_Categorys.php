@@ -16,7 +16,10 @@ class Categorys extends Migration
             ],
             'parent_id'          => [
                 'type'           => 'INT',
+<<<<<<< HEAD
                 'null' => true,
+=======
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
             ],
             'name' => [
                 'type' => 'VARCHAR',

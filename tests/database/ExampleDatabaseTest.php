@@ -2,7 +2,10 @@
 
 use CodeIgniter\Test\CIUnitTestCase;
 use CodeIgniter\Test\DatabaseTestTrait;
+<<<<<<< HEAD
 use Tests\Support\Database\Seeds\ExampleSeeder;
+=======
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
 use Tests\Support\Models\ExampleModel;
 
 /**
@@ -12,8 +15,11 @@ final class ExampleDatabaseTest extends CIUnitTestCase
 {
     use DatabaseTestTrait;
 
+<<<<<<< HEAD
     protected $seed = ExampleSeeder::class;
 
+=======
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
     public function testModelFindAll()
     {
         $model = new ExampleModel();
