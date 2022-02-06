@@ -157,7 +157,7 @@ function addCart(productId) {
                 }else{
                     $("#no_order").attr('disabled', 'disabled');
                     $("#customer").attr('disabled', 'disabled');
-                    $('.cart').load("<?= site_url('/loadData?load=getCart') ?>");
+                    $('.cart').load("<?= site_url('/home/loadData?load=getCart') ?>");
                     $('.cartTotalItem').html(e.totalItem+' Item');
                     $('.cartTotalPrice').html(e.totalPrice);
                     $('#totalPrice').val(e.totalPrice);
@@ -205,7 +205,7 @@ function deleteCart(productId) {
                 var cashierId = $("#cashier_id").val();
                 var customerId = $("#customer_id").val();
                 var noOrder = $("#no_order").val();
-                $.post('<?= site_url() ?>/deleteCart', {
+                $.post('<?= site_url() ?>/home/deleteCart', {
                     cashier_id: cashierId,
                     product_id: productId,
                     customer_id: customerId,
@@ -216,7 +216,7 @@ function deleteCart(productId) {
                     }else if (e.st == 2) {
                         swal('',"Pesanan tidak ada!",'error');
                     }else{
-                        $('.cart').load("<?= site_url('/loadData?load=getCart') ?>");
+                        $('.cart').load("<?= site_url('/home/loadData?load=getCart') ?>");
                         $('.cartTotalItem').html(e.totalItem+' Item');
                         $('.cartTotalPrice').html(e.totalPrice);
                         $('#totalPrice').val(e.totalPrice);
