@@ -509,7 +509,11 @@ class Mimes
     {
         $type = trim(strtolower($type), '. ');
 
+<<<<<<< HEAD
+        $proposedExtension = trim(strtolower($proposedExtension ?? ''));
+=======
         $proposedExtension = trim(strtolower($proposedExtension));
+>>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
 
         if ($proposedExtension !== '') {
             if (array_key_exists($proposedExtension, static::$mimes) && in_array($type, is_string(static::$mimes[$proposedExtension]) ? [static::$mimes[$proposedExtension]] : static::$mimes[$proposedExtension], true)) {
