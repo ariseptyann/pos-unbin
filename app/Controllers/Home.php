@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Controllers;
-<<<<<<< HEAD
 use CodeIgniter\Controller;
 use App\Models\UsersModel;
 
@@ -235,13 +234,5 @@ class Home extends Controller
             'st' => $st,
         ));
         die();
-=======
-
-class Home extends BaseController
-{
-    public function index()
-    {
-        return view('login');
->>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
     }
 }
