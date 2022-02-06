@@ -97,11 +97,7 @@ class Security extends BaseConfig
      *
      * @var bool
      */
-<<<<<<< HEAD
     public $redirect = false;
-=======
-    public $redirect = true;
->>>>>>> 8b3c2762c59404147fb47168334e4fd79857db71
 
     /**
      * --------------------------------------------------------------------------
