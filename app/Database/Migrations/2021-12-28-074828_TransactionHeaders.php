@@ -16,6 +16,7 @@ class TransactionHeaders extends Migration
             ],
             'user_id' => [
                 'type' => 'INT',
+                'null' => true,
             ],
             'no_transaction' => [
                 'type' => 'VARCHAR',

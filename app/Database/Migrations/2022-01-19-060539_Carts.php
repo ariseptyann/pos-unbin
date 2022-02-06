@@ -19,6 +19,7 @@ class Carts extends Migration
             ],
             'customer_id' => [
                 'type' => 'INT',
+                'null' => true,
             ],
             'product_id' => [
                 'type' => 'INT',
