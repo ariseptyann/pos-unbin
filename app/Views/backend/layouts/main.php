@@ -33,10 +33,10 @@
         <!-- Page Content -->
         <div class="app-content content">
             <div class="content-wrapper">
-                <div class="content-header row">
+                <!-- <div class="content-header row">
                     <div class="content-header-left col-md-6 col-12 mb-2">
                         <h3 class="content-header-title">
-                            <!-- {{ isset($title) ? $title : 'Dashboard' }} -->
+                            {{ isset($title) ? $title : 'Dashboard' }}
                         </h3>
                         <div class="row breadcrumbs-top">
                             <div class="breadcrumb-wrapper col-12">
@@ -45,11 +45,11 @@
                                         Home
                                     </li>
                                 </ol>
-                                <!-- @include('layouts.breadcrumb') -->
+                                @include('layouts.breadcrumb')
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Menu -->
                 <?= $this->include('backend/layouts/sidebar') ?>

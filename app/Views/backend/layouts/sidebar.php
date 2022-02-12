@@ -31,6 +31,12 @@
                     <span class="menu-title">User</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="/backend/report/index">
+                    <i class="icon-doc"></i>
+                    <span class="menu-title">Report</span>
+                </a>
+            </li>
             <!-- <li class="navigation-header">
                 <span>Settings</span>
                 <i class="la la-ellipsis-h ft-minus" data-toggle="tooltip" data-placement="right" data-original-title="Support"></i>
