@@ -7,7 +7,6 @@
             <div class="card-content">
                 <div class="card-body">
                     <h4 class="card-title">Product Terlaris Hari Ini</h4>
-                    <p class="card-text">Some quick example text to build on the card.</p>
                 </div>
                 <ul class="list-group list-group-flush">
                     <?php foreach ($product as $val):?>
