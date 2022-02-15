@@ -49,19 +49,21 @@
                 <table class="table table-striped table-bordered default-ordering">
                     <thead>
                         <tr>
-                            <th>User</th>
+                            <th>Customer</th>
                             <th>No Transaction</th>
                             <th>Product</th>
                             <th>Discount</th>
+                            <th>Total</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($report as $val):?>
                             <tr>
-                                <td><?= $val->username;?></td>
+                                <td><?= (!empty($val->username) ? $val->username : 'Pelanggan Umum') ?></td>
                                 <td><?= $val->no_transaction;?></td>
                                 <td><?= $val->prodname;?></td>
                                 <td><?= $val->discount;?></td>
+                                <td><?= $val->total;?></td>
                             </tr>
                         <?php endforeach;?>
                     </tbody>

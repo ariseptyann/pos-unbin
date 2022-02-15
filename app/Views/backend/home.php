@@ -2,24 +2,7 @@
 
 <?= $this->section('content') ?>
 <div class="row">
-    <div class="col-xl-4 col-lg-12">
-        <div class="card">
-            <div class="card-content">
-                <div class="card-body">
-                    <h4 class="card-title">Product Terlaris Hari Ini</h4>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <?php foreach ($product as $val):?>
-                        <li class="list-group-item">
-                            <span class="badge badge-pill badge-primary float-right"><?= $val->qty;?></span> <?= $val->name;?>
-                        </li>
-                    <?php endforeach;?>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-8 col-lg-12">
-        <!-- Response message -->
+    <div class="col-xl-12 col-lg-12">
         <?php if(session()->getFlashdata('success')):?>
             <div class="alert alert-success alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -30,7 +13,7 @@
         <?php endif;?>
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Basic Column Chart</h4>
+                <h4 class="card-title">Product Terlaris</h4>
                 <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">

@@ -17,6 +17,7 @@
             </div>
             <div class="card-content collapse show">
                 <div class="card-body card-dashboard">
+                    <div class="table-responsive">
                     <table class="table table-striped table-bordered default-ordering">
                         <thead>
                             <tr>
@@ -50,6 +51,7 @@
                             <?php endforeach;?>
                         </tbody>
                     </table>
+                    </div>
                 </div>
             </div>
         </div>

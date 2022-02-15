@@ -29,15 +29,15 @@
                         <tbody>
                             <?php foreach ($users as $user):?>
                                 <tr>
-                                    <td><?= $user->name;?></td>
+                                    <td><?= $user->name ?></td>
                                     <td><?= $user->username;?></td>
                                     <td>
                                         <?php if($user->status == 1):?>
-                                            <div class="badge badge-info">Admin</div>
+                                            <div class="badge badge-success">Admin</div>
                                         <?php elseif($user->status == 2):?>
-                                            <div class="badge badge-info">Kasir</div>
+                                            <div class="badge badge-warning">Kasir</div>
                                         <?php elseif($user->status == 3):?>
-                                            <div class="badge badge-info">Apa Ya?</div>
+                                            <div class="badge badge-info">Customer</div>
                                         <?php endif;?>
                                     </td>
                                     <td>

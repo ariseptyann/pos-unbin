@@ -34,7 +34,7 @@ class Database extends Config
         'DSN'      => '',
         'hostname' => 'localhost',
         'username' => 'root',
-        'password' => '!@Password12',
+        'password' => '',
         'database' => 'kuliah_webbase_pos',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
